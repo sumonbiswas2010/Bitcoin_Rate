@@ -20,7 +20,7 @@ module.exports = {
       if(resp.statusCode != 200){
         return res.status(resp.statusCode).json({
           success: 0,
-          data: `Sorry, your requested currency ${c.toUpperCase()} is not supported or is invalid`
+          message: `Sorry, your requested currency ${c.toUpperCase()} is not supported or is invalid`
         });
       }
 
