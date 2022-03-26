@@ -1,26 +1,25 @@
-
 const https = require(`https`);
 
 module.exports = {
 
   getRate : (req, res) => {
 
-
-    let c = req.params.c
-    c=c.toLowerCase();
-
     let current_rate, lowest_rate, highest_rate, lowest_date, highest_date;
+    let currency = req.params.cur
+    currency = currency.toLowerCase();
+    currency = currency.slice(0,3)
 
-    let url = `https://api.coindesk.com/v1/bpi/currentprice/${c}.json`;
+    //getting the current price from here
+
+    let url = `https://api.coindesk.com/v1/bpi/currentprice/${currency}.json`;
 
     https.get(url,(resp) => {
+
       let body = "";
-
-
       if(resp.statusCode != 200){
         return res.status(resp.statusCode).json({
           success: 0,
-          message: `Sorry, your requested currency ${c.toUpperCase()} is not supported or is invalid`
+          message: `Sorry, your requested currency ${currency.toUpperCase()} is not supported or is invalid`
         });
       }
 
@@ -31,37 +30,30 @@ module.exports = {
 
       resp.on("end", () => {
           try {
-            c=c.toUpperCase();
+
+            currency=currency.toUpperCase();
             let json = JSON.parse(body);
-            current_rate= json.bpi[c].rate_float;
+            current_rate= json.bpi[currency].rate_float;
             
-
-
-            //2nd part
+            //First part is completed here. Now getting the rates for last 30 days.
 
             let today = new Date();
-
-
             let startday = new Date(today.getTime() - 30*24*60*60*1000);
 
             today = today.toISOString().slice(0,10);
             startday = startday.toISOString().slice(0,10);
 
-
-            
-            url = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startday}&end=${today}&currency=${c}`;
-
+            url = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startday}&end=${today}&currency=${currency}`;
 
             https.get(url,(resp) => {
               let body = "";
 
-
-              // if(resp.statusCode != 200){
-              //   return res.json({
-              //     success: 0,
-              //     data: "Not Supported"
-              //   });
-              // }
+              if(resp.statusCode != 200){
+                return res.status(resp.statusCode).json({
+                  success: 0,
+                  data: "Something Invalid or Not Supported"
+                });
+              }
 
               resp.on("data", (chunk) => {
                   body += chunk;
@@ -72,56 +64,62 @@ module.exports = {
                     let json = JSON.parse(body);
                     let rates = json.bpi;
 
-                    let h=-999999999, l=999999999, hk, lk;
+                    let highest=-999999999, lowest=999999999, high_date, low_date;
                     for (let key in rates) {
                     let value = rates[key];
-                      if(value>h) {
-                        h=value;
-                        hk=key;
+                      if(value>highest) {
+                        highest = value;
+                        high_date =key;
                       }
-                      if(value<l) {
-                        l=value;
-                        lk=key;
+                      if(value<lowest) {
+                        lowest = value;
+                        low_date = key;
                       }
                     }
 
-                    lowest_rate=l
-                    lowest_date = lk
-                    highest_rate=h
-                    highest_date = hk
+                    lowest_rate=lowest
+                    lowest_date = low_date;
+                    highest_rate=highest
+                    highest_date = high_date
 
                     return res.status(200).json({
                       success: 1,
-                      current_rate: current_rate,
-                      highest_rate: highest_rate,
-                      highest_date: highest_date,
-                      lowest_rate: lowest_rate,
-                      lowest_date: lowest_date
-                      
+                      current_rate,
+                      highest_rate,
+                      highest_date,
+                      lowest_rate,
+                      lowest_date
                     });
                     
                     
                   } catch (error) {
-                      console.error(error.message);
+                      return res.status(400).json({
+                        success: 0,
+                        message: error.message
+                      });
                   };
               });
 
             }).on("error", (error) => {
-                console.error(error.message);
+                return res.status(400).json({
+                  success: 0,
+                  message: error.message
+                });
             });
             
           } catch (error) {
-              console.error(error.message);
+              return res.status(400).json({
+                success: 0,
+                message: error.message
+              });
           };
       });
 
     }).on("error", (error) => {
-        console.error(error.message);
-    });
-
-    
-
+        return res.status(400).json({
+          success: 0,
+          message: error.message
+        });
+    });  
   }
-
-  
 };
