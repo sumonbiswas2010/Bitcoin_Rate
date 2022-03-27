@@ -54,8 +54,11 @@ https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
 
   OR
 
-  * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "You are unauthorized to make this request." }`
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** 
+    `{"success":0,
+    "message":"Sorry, your requested currency 123 cannot be a number"
+    }`
 
 * **Sample Call:**
 
