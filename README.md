@@ -5,14 +5,16 @@ This application will show the current bitcoin rate, highest and lowest for the 
 Example Links:
 * **https://bitcoinrate.sumon.com.bd/api/getBitcoinInfo/currency=BDT** 
 * **https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd**
+
+* **This API returns**
+  The current Bitcoin rate, in the requested currency
+  The lowest Bitcoin rate in the last 30 days, in the requested currency
+  The highest Bitcoin rate in the last 30 days, in the requested currency.
+*If the currency code provided is not supported by the API, it returns 404 with a message.
  
 
 ----
-  This API returns 
-* ** The current Bitcoin rate, in the requested currency
-* ** The lowest Bitcoin rate in the last 30 days, in the requested currency
-* ** The highest Bitcoin rate in the last 30 days, in the requested currency.
-  If the currency code provided is not supported by the API, it returns 404 with a message.
+
 
 * **URL**
 
