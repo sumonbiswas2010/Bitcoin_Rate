@@ -6,8 +6,18 @@ module.exports = {
 
     let current_rate, lowest_rate, highest_rate, lowest_date, highest_date;
     let currency = req.params.cur
-    currency = currency.toLowerCase();
-    currency = currency.slice(0,3)
+    
+    if(!isNaN(parseFloat(currency)) && !isNaN(currency - 0)){
+      return res.status(400).json({
+        success: 0,
+        message: `Sorry, your requested currency ${currency} cannot be a number`
+      });
+    }
+    else {
+      currency = currency.toLowerCase();
+      currency = currency.slice(0,3)
+    }
+    
 
     //getting the current price from here
 

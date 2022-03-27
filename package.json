@@ -17,5 +17,20 @@
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2"
   },
-  "description": ""
+  "description": "This application will show the current bitcoin rate, highest and lowest for the last 30 days for any supported currencies.",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumonbiswas2010/Bitcoin_Rate.git"
+  },
+  "keywords": [
+    "Bitcoin",
+    "Rate"
+  ],
+  "bugs": {
+    "url": "https://github.com/sumonbiswas2010/Bitcoin_Rate/issues"
+  },
+  "homepage": "https://github.com/sumonbiswas2010/Bitcoin_Rate#readme"
 }
