@@ -13,9 +13,9 @@ Example Links:
  If the currency code provided is not supported by the API, it returns 404 with a message.
  
 * **Docker Informations** <br />
-    Dockerhub Link: https://hub.docker.com/r/sumonbiswas2010/bitcoin_rate/<br />
-    Docker Pull Command: docker pull sumonbiswas2010/bitcoin_rate:latest<br />
-    Docker Run Command: docker run -it -p 8000:5000 sumonbiswas2010/bitcoin_rate  --> (App will run on localhost:8000)
+      Dockerhub Link: https://hub.docker.com/r/sumonbiswas2010/bitcoin_rate/<br />
+      Docker Pull Command: docker pull sumonbiswas2010/bitcoin_rate:latest<br />
+      Docker Run Command: docker run -it -p 8000:5000 sumonbiswas2010/bitcoin_rate:latest  --> (App will run on localhost:8000)
 ----
 
 
