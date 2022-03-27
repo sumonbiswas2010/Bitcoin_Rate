@@ -7,9 +7,9 @@ Example Links:
 * **https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd**
 
 * **This API returns**
-  The current Bitcoin rate, in the requested currency
-  The lowest Bitcoin rate in the last 30 days, in the requested currency
-  The highest Bitcoin rate in the last 30 days, in the requested currency.
+  **The current Bitcoin rate, in the requested currency.**
+  **The lowest Bitcoin rate in the last 30 days, in the requested currency.**
+  **The highest Bitcoin rate in the last 30 days, in the requested currency.**
 *If the currency code provided is not supported by the API, it returns 404 with a message.
  
 
