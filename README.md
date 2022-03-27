@@ -10,7 +10,7 @@ Example Links:
   * **The current Bitcoin rate, in the requested currency.** <br />
   * **The lowest Bitcoin rate in the last 30 days, in the requested currency.** <br />
   * **The highest Bitcoin rate in the last 30 days, in the requested currency.** <br />
-*If the currency code provided is not supported by the API, it returns 404 with a message.
+ If the currency code provided is not supported by the API, it returns 404 with a message.
  
 
 ----
