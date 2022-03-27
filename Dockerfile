@@ -1,11 +1,6 @@
 FROM node:17 as base
-
-WORKDIR /src
-COPY package*.json ./
-EXPOSE 3000
-
-FROM base as production
-ENV NODE_ENV=production
-RUN npm ci
-COPY . ./
+WORKDIR /app
+COPY package.json /app
+RUN npm install
+COPY . /app
 CMD ["npm", "start"]

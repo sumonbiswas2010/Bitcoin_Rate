@@ -27,6 +27,22 @@ describe("test routes", () => {
         expect(res.statusCode).toBe(200);
     })
 
+    test("Should have successful (More than three char)", async ()=>{
+        const res = await request(app).get("/api/getBitcoinInfo/currency=bdtts")
+
+        expect(res.body).toHaveProperty("success", 1);
+        expect(res.body).toHaveProperty("current_rate");
+        expect(res.statusCode).toBe(200);
+    })
+
+    test("Should have failed (numbers as currency)", async ()=>{
+        const res = await request(app).get("/api/getBitcoinInfo/currency=123")
+
+        expect(res.body).toHaveProperty("success", 0);
+        expect(res.body).toHaveProperty("message");
+        expect(res.statusCode).toBe(400);
+    })
+
     test("Should have failed", async ()=>{
         const res = await request(app).get("/api/getBitcoinInfo/currency=xyz")
 
