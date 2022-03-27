@@ -2,7 +2,10 @@
  
 This application will show the current bitcoin rate, highest and lowest for the last 30 days for any supported currencies. 
 
-Example Link: https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
+Example Links: 
+ ● https://bitcoinrate.sumon.com.bd/api/getBitcoinInfo/currency=BDT
+ ● https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
+ 
 
 **Show User**
 ----
@@ -14,7 +17,7 @@ Example Link: https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
 
 * **URL**
 
-  https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=:currency
+  https://bitcoinrate.sumon.com.bd/api/getBitcoinInfo/currency=:currency
 
 * **Method:**
 
@@ -68,7 +71,7 @@ Example Link: https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
       redirect: 'follow'
     };
 
-    fetch("https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=BDT", requestOptions)
+    fetch("https://bitcoinrate.sumon.com.bd/api/getBitcoinInfo/currency=BDT", requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
