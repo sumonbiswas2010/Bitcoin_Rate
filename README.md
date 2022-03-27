@@ -2,7 +2,7 @@
  
 This application will show the current bitcoin rate, highest and lowest for the last 30 days for any supported currencies. 
 
-https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
+Example Link: https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
 
 **Show User**
 ----
@@ -32,7 +32,7 @@ https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
+  * **Code:** 200 OK / Successful <br />
     **Content:** 
     `{
     "success": 1,
@@ -75,5 +75,3 @@ https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
   ```
   
  * **Notes:**
-
-  <_This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here._> 
