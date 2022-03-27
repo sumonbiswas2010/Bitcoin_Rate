@@ -1,20 +1,24 @@
 # Bitcoin_Rate
  
 This application will show the current bitcoin rate, highest and lowest for the last 30 days for any supported currencies. 
+ 
+Example Links:
+* **https://bitcoinrate.sumon.com.bd/api/getBitcoinInfo/currency=BDT** 
+* **https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd**
 
-https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
+* **This API returns** <br />
+  * **The current Bitcoin rate, in the requested currency.** <br />
+  * **The lowest Bitcoin rate in the last 30 days, in the requested currency.** <br />
+  * **The highest Bitcoin rate in the last 30 days, in the requested currency.** <br />
+ If the currency code provided is not supported by the API, it returns 404 with a message.
+ 
 
-**Show User**
 ----
-  This API returns 
-   ● The current Bitcoin rate, in the requested currency
-   ● The lowest Bitcoin rate in the last 30 days, in the requested currency
-   ● The highest Bitcoin rate in the last 30 days, in the requested currency.
-  If the currency code provided is not supported by the API, it returns 404 with a message.
+
 
 * **URL**
 
-  https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=:currency
+  https://bitcoinrate.sumon.com.bd/api/getBitcoinInfo/currency=:currency
 
 * **Method:**
 
@@ -32,7 +36,7 @@ https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
+  * **Code:** 200 OK / Successful <br />
     **Content:** 
     `{
     "success": 1,
@@ -54,8 +58,11 @@ https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
 
   OR
 
-  * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "You are unauthorized to make this request." }`
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** 
+    `{"success":0,
+    "message":"Sorry, your requested currency 123 cannot be a number"
+    }`
 
 * **Sample Call:**
 
@@ -65,12 +72,11 @@ https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=usd
       redirect: 'follow'
     };
 
-    fetch("https://bitcoinrate.vercel.app/api/getBitcoinInfo/currency=BDT", requestOptions)
+    fetch("https://bitcoinrate.sumon.com.bd/api/getBitcoinInfo/currency=BDT", requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   ```
   
  * **Notes:**
-
-  <_This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here._> 
+ * Postman Link : https://www.postman.com/sumonbiswas/workspace/sumon-s-public-workspace/collection/15584254-ef20b909-0f3f-4f85-9b67-bb877b2af6fd
