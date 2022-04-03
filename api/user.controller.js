@@ -1,4 +1,5 @@
 const https = require(`https`);
+const sorted_array = require("../functions/sort");
 
 module.exports = {
 
@@ -73,24 +74,21 @@ module.exports = {
                   try {
                     let json = JSON.parse(body);
                     let rates = json.bpi;
-
-                    let highest=-999999999, lowest=999999999, high_date, low_date;
+                    let sorted =[];
+                    let sortedDate =[];
+                    
+                    let i=0;
                     for (let key in rates) {
-                    let value = rates[key];
-                      if(value>highest) {
-                        highest = value;
-                        high_date =key;
-                      }
-                      if(value<lowest) {
-                        lowest = value;
-                        low_date = key;
-                      }
+                      sorted.push(rates[key])
+                      sortedDate.push(key);
                     }
 
-                    lowest_rate=lowest
-                    lowest_date = low_date;
-                    highest_rate=highest
-                    highest_date = high_date
+                    const results =sorted_array(sorted, sortedDate);
+                    
+                    lowest_rate=results[0]
+                    lowest_date = results[2]
+                    highest_rate=results[1]
+                    highest_date = results[3]
 
                     return res.status(200).json({
                       success: 1,
