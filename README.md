@@ -10,12 +10,14 @@ Example Links:
   * **The current Bitcoin rate, in the requested currency.** <br />
   * **The lowest Bitcoin rate in the last 30 days, in the requested currency.** <br />
   * **The highest Bitcoin rate in the last 30 days, in the requested currency.** <br />
- If the currency code provided is not supported by the API, it returns 404 with a message.
+ If the currency code provided is not supported by the API, it returns a 404 with a message.
  
 * **Docker Informations** <br />
      * Dockerhub Link: https://hub.docker.com/r/sumonbiswas2010/bitcoin_rate/<br />
      * Docker Pull Command: docker pull sumonbiswas2010/bitcoin_rate:latest<br />
      * Docker Run Command: docker run -it -p 8000:5000 sumonbiswas2010/bitcoin_rate:latest  --> (App will run on localhost:8000)
+   
+* **GitHub Link: https://github.com/sumonbiswas2010/Bitcoin_Rate/**
 ----
 
 
@@ -31,7 +33,7 @@ Example Links:
 
    **Required:**
  
-   `currency=[String with 3 or characters. In any case of longer string, the api will use only the first three letters.]`
+   `currency=[String with 3 or characters. In any case of a longer string, the API will use only the first three letters.]`
 
 * **Data Params**
 
@@ -81,5 +83,5 @@ Example Links:
       .catch(error => console.log('error', error));
   ```
   
- * **Notes:**
- * Postman Link : https://www.postman.com/sumonbiswas/workspace/sumon-s-public-workspace/collection/15584254-ef20b909-0f3f-4f85-9b67-bb877b2af6fd
+* **Notes:**
+* Postman Link : https://www.postman.com/sumonbiswas/workspace/sumon-s-public-workspace/collection/15584254-ef20b909-0f3f-4f85-9b67-bb877b2af6fd
